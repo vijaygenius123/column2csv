@@ -1,0 +1,16 @@
+body {
+  background: linear-gradient(to left, rgba(0, 255, 127, 0.5), rgba(0, 127, 255, 0.5));
+}
+
+.container {
+  padding: 1em 1em;
+  margin: 1em 1em;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+.container textarea {
+  width: 90%;
+  height: 80vh;
+}
+
+/*# sourceMappingURL=styles.css.map */
