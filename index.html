@@ -13,13 +13,40 @@
 </header>
 
 <h1> Column 2 CSV</h1>
+
+<div class="container">
+    <div>
+        <label for="buffer">Character To Add At Start And End</label>
+        <input type="text" id="buffer" name="buffer" value="'">
+    </div>
+</div>
+
 <div class="container">
     <textarea name="" id="input" cols="30" rows="10"></textarea>
     <textarea name="" id="output" cols="30" rows="10"></textarea>
 </div>
 
+
+
 <footer>
 
 </footer>
+<script>
+    const input = document.getElementById("input");
+    const buffer = document.getElementById("buffer");
+    const output = document.getElementById("output");
+
+    input.addEventListener('input', function (){
+       if(input.value) {
+           const tokens = input.value.split("\n");
+           const bufferValue = buffer.value;
+           const outputString = tokens.reduce((out, current) => {
+              return out + `${bufferValue}${current}${bufferValue},`
+           },'');
+           output.innerText = outputString.toString().slice(0, -1);
+       }
+    });
+
+</script>
 </body>
 </html>
