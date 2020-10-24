@@ -12,6 +12,16 @@ body{
     width: 90%;
     height: 80vh;
   }
-
 }
 
+
+.btn{
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 0.5em;
+}
+
+.primary{
+  background: deepskyblue;
+  color: black;
+}
