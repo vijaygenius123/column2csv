@@ -44,14 +44,15 @@
            const bufferValue = buffer.value;
            column2csv(tokens, bufferValue);
        }
+       else{
+           output.innerHTML = ''
+       }
     });
 
     buffer.addEventListener('input', function (){
-        if(buffer.value) {
-            const tokens = input.value.split("\n");
-            const bufferValue = buffer.value;
-            column2csv(tokens, bufferValue);
-        }
+        const tokens = input.value.split("\n");
+        const bufferValue = buffer.value;
+        column2csv(tokens, bufferValue);
     });
 
 
