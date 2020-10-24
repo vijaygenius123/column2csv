@@ -17,7 +17,10 @@
 <div class="container">
     <div>
         <label for="buffer">Character To Add At Start And End</label>
-        <input type="text" id="buffer" name="buffer" value="'">
+        <input type="text" id="buffer" name="buffer" value="">
+    </div>
+    <div>
+       <button onclick="copy()">Copy</button>
     </div>
 </div>
 
@@ -25,8 +28,6 @@
     <textarea name="" id="input" cols="30" rows="10"></textarea>
     <textarea name="" id="output" cols="30" rows="10"></textarea>
 </div>
-
-
 
 <footer>
 
@@ -36,16 +37,36 @@
     const buffer = document.getElementById("buffer");
     const output = document.getElementById("output");
 
+
     input.addEventListener('input', function (){
        if(input.value) {
            const tokens = input.value.split("\n");
            const bufferValue = buffer.value;
-           const outputString = tokens.reduce((out, current) => {
-              return out + `${bufferValue}${current}${bufferValue},`
-           },'');
-           output.innerText = outputString.toString().slice(0, -1);
+           column2csv(tokens, bufferValue);
        }
     });
+
+    buffer.addEventListener('input', function (){
+        if(buffer.value) {
+            const tokens = input.value.split("\n");
+            const bufferValue = buffer.value;
+            column2csv(tokens, bufferValue);
+        }
+    });
+
+
+
+    function column2csv(tokens, bufferValue){
+        const outputString = tokens.reduce((out, current) => {
+            return out + `${bufferValue}${current}${bufferValue},`
+        },'');
+        output.innerHTML = outputString.toString().slice(0, -1);
+    }
+
+    function copy(){
+        output.select();
+        document.execCommand("copy");
+    }
 
 </script>
 </body>
